@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 mongoose.Promise = Promise;
 
 const GoogleBooksSchema = new Schema({
+    googleID: {
+        type: String
+    },
     title: {
         type: String,
         trim: true,

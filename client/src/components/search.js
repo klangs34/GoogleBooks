@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import { useStoreContext } from '../util/globalContext';
 import { LOADING, ADD_RESULTS } from '../util/actions';
 import { API } from '../util/api';
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const search = () => {
 

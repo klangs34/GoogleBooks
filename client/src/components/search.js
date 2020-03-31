@@ -2,10 +2,13 @@ import React, { useState, Fragment } from 'react';
 import { useStoreContext } from '../util/globalContext';
 import { LOADING, ADD_RESULTS } from '../util/actions';
 import { API } from '../util/api';
+import { useLocation, Link } from 'react-router-dom'
 
-const search = (props) => {
+const search = () => {
 
     const [search, setSearch] = useState("");
+
+    const router = useLocation();
 
     const [state, dispatch] = useStoreContext();
     const handleSearch = (e) => {
@@ -20,7 +23,7 @@ const search = (props) => {
 
     return (
         <Fragment>
-        {props.location.pathname === "/" || props.location.pathname === '/search' ? 
+        {router.pathname === "/" || router.pathname === '/search' ? 
         <div className="container mb-4">
             <label htmlFor="search">Book Search</label>
             <div className="input-group mb-3">

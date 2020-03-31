@@ -15,13 +15,13 @@ function App() {
         <StoreProvider>
           <Navbar />
           <Banner />
-            <Switch>
-              <Search />
-              <Route exact path="/" component={Results} />
-              <Route exact path="/search" component={Results} />
-              <Route exact path="/saved" component={Saved} />
-              <Route exact path="/test" component={NoMatch} />
-            </Switch>
+          <Search />
+          <Switch>
+            <Route exact path="/" component={Results} />
+            <Route exact path="/search" component={Results} />
+            <Route exact path="/saved" component={Saved} />
+            <Route exact path="/test" component={NoMatch} />
+          </Switch>
         </StoreProvider>
       </BrowserRouter>
     </Fragment>

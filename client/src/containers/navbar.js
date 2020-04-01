@@ -3,7 +3,7 @@ import { useLocation, Link } from 'react-router-dom'
 
 const navBar = () => {
     const router = useLocation();
-    console.log(router)
+    //console.log(router)
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand">Google Books</Link>

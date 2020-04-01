@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect } from 'react'
 import { useStoreContext } from '../util/globalContext';
+import Div from './div';
+import P from './p';
 import { API } from '../util/api';
 
 const results = () => {
     
     const [state, dispatch] = useStoreContext();
-    console.log(state.results.items)
+    //console.log(state.results.items)
 
     useEffect(() => {
 
@@ -32,12 +34,12 @@ const results = () => {
             <div className="mb-4 container h-2">Results</div>
             {state.results.items ?
                 state.results.items.map((val) => (
-                    <div key={val.id} className="container border p-3" style={{ backgroundColor: '#e9ecef' }}>
+                    <Div key={val.id}>
                         <div className="row d-flex justify-content-between">
                             <div className="col">
                                 <p>{val.volumeInfo.title}</p>
-                                {val.volumeInfo.authors.map(val => (
-                                    <p>{val}</p>
+                                {val.volumeInfo.authors.map((val, index) => (
+                                    <P key={index}>{val}</P>
                                 ))}
                             </div>
                             <div className="col">
@@ -55,7 +57,7 @@ const results = () => {
                                 <p>{val.volumeInfo.description}</p>
                             </div>
                         </div>
-                    </div>
+                    </Div>
                 )) : <div className="container text-center h2">Please search for a book</div>
             }
         </Fragment>

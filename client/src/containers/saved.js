@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect } from 'react';
 import { useStoreContext } from '../util/globalContext';
 import { API } from '../util/api';
+import P from './p';
 import { GET_SAVED_BOOKS } from '../util/actions';
 
 const saved = () => {
 
     const [state, dispatch] = useStoreContext();
-    console.log(state)
+    //console.log(state)
 
     useEffect(() => {
         API.getSavedBooks().then(results => dispatch({ type: GET_SAVED_BOOKS, post: results.data }))
@@ -33,8 +34,8 @@ const saved = () => {
                         <div className="row d-flex justify-content-between">
                             <div className="col">
                                 <p>{val.title}</p>
-                                {val.authors.map(val => (
-                                    <p>{val}</p>
+                                {val.authors.map((val, index) => (
+                                    <P key={index}>{val}</P>
                                 ))}
                             </div>
                             <div className="col">

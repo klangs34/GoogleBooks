@@ -1,10 +1,15 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useStoreContext } from '../util/globalContext';
 import { API } from '../util/api';
 
 const results = () => {
+    
     const [state, dispatch] = useStoreContext();
     console.log(state.results.items)
+
+    useEffect(() => {
+
+    }, [state.results])
 
     const handleView = (e, link) => {
         e.preventDefault();
@@ -43,7 +48,7 @@ const results = () => {
                         <div className="row">
                             <div className="col-4">
                                 <div className="card" style={{ width: "18rem" }}>
-                                    <img src={val.volumeInfo.imageLinks.thumbnail} className="card-img-top" alt={val.volumeInfo.title} />
+                                    <img src={val.volumeInfo.imageLinks && val.volumeInfo.imageLinks.thumbnail} className="card-img-top" alt={val.volumeInfo.title} />
                                 </div>
                             </div>
                             <div className="col">

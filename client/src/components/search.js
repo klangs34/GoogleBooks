@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { useStoreContext } from '../util/globalContext';
 import { LOADING, ADD_RESULTS } from '../util/actions';
 import { API } from '../util/api';
@@ -11,6 +11,7 @@ const search = () => {
     const router = useLocation();
 
     const [state, dispatch] = useStoreContext();
+
     const handleSearch = (e) => {
         e.preventDefault();
         const newSearch = search.trim()

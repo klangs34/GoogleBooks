@@ -1,17 +1,20 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useStoreContext } from '../util/globalContext';
 import Div from './div';
 import P from './p';
 import { API } from '../util/api';
+import './results.css'
 
 const results = () => {
     
     const [state, dispatch] = useStoreContext();
     //console.log(state.results.items)
 
+    const [toastClass, setToastClass] = useState("");
+
     useEffect(() => {
 
-    }, [state.results])
+    }, [state.results, toastClass])
 
     const handleView = (e, link) => {
         e.preventDefault();
@@ -26,7 +29,10 @@ const results = () => {
         const { thumbnail } = resultObj.volumeInfo.imageLinks;
 
         API.postBook({ id, title, authors, infoLink, description, thumbnail })
-            .then(data => console.log(data));
+            .then(data => {
+                //console.log(data)
+                setToastClass("success");
+            });
     }
 
     return (
@@ -60,6 +66,9 @@ const results = () => {
                     </Div>
                 )) : <div className="container text-center h2">Please search for a book</div>
             }
+            <div className={toastClass && toastClass} id="toast">
+               Book Saved Successfully!
+            </div>
         </Fragment>
     )
 }

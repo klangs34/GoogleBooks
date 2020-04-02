@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/" component={Results} />
             <Route exact path="/search" component={Results} />
             <Route exact path="/saved" component={Saved} />
-            <Route exact path="/test" component={NoMatch} />
+            <Route exact path="/*" component={NoMatch} />
           </Switch>
         </StoreProvider>
       </BrowserRouter>

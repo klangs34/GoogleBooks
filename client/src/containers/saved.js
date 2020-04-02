@@ -1,13 +1,16 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useStoreContext } from '../util/globalContext';
 import { API } from '../util/api';
 import P from './p';
 import { GET_SAVED_BOOKS } from '../util/actions';
+import './saved.css'
 
 const saved = () => {
 
     const [state, dispatch] = useStoreContext();
     //console.log(state)
+
+    const [toastClass, setToastClass] = useState("");
 
     useEffect(() => {
         API.getSavedBooks().then(results => dispatch({ type: GET_SAVED_BOOKS, post: results.data }))
@@ -21,7 +24,12 @@ const saved = () => {
 
     const handleDelete = (id) => {
         API.deleteSaved(id)
-            .then(data => window.location.reload());
+            .then(data => {
+                setToastClass("success");
+                setTimeout(()=> {
+                    window.location.reload()
+                }, 1000)
+            });
         //reload page.
     }
 
@@ -56,6 +64,9 @@ const saved = () => {
                     </div>
                 )) : <div className="container text-center h2">Please search for a book</div>
             }
+             <div className={toastClass && toastClass} id="toast">
+               Book Deleted Successfully!
+            </div>
         </Fragment>
     )
 }

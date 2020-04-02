@@ -24,24 +24,24 @@ const search = () => {
 
     return (
         <Fragment>
-        {router.pathname === "/" || router.pathname === '/search' ? 
-        <div className="container mb-4">
-            <label htmlFor="search">Book Search</label>
-            <div className="input-group mb-3">
-                <input type="text"
-                    id="search" 
-                    className="form-control" 
-                    placeholder="Search Book" 
-                    aria-label="Search Book" 
-                    aria-describedby="search-button"
-                    value={search} 
-                    onChange={(e)=> setSearch(e.target.value)}/>
-                <div className="input-group-append">
-                    <button onClick={e => handleSearch(e)} className="btn btn-outline-secondary" type="button" id="search-button">Button</button>
+            {router.pathname === "/" || router.pathname === '/search' ?
+                <div className="container mb-4">
+                    <label htmlFor="search">Book Search</label>
+                    <div className="input-group mb-3">
+                        <input type="text"
+                            id="search"
+                            className="form-control"
+                            placeholder="Search Book"
+                            aria-label="Search Book"
+                            aria-describedby="search-button"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)} />
+                        <div className="input-group-append">
+                            <button onClick={e => handleSearch(e)} className="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        : ""}
+                : ""}
         </Fragment>
     )
 }

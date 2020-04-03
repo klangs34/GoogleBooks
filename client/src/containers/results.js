@@ -6,15 +6,11 @@ import { API } from '../util/api';
 import './results.css'
 
 const results = () => {
-    
+
     const [state, dispatch] = useStoreContext();
     //console.log(state.results.items)
 
     const [toastClass, setToastClass] = useState("");
-
-    useEffect(() => {
-
-    }, [state.results, toastClass])
 
     const handleView = (e, link) => {
         e.preventDefault();
@@ -44,7 +40,7 @@ const results = () => {
                         <div className="row d-flex justify-content-between">
                             <div className="col">
                                 <p>{val.volumeInfo.title}</p>
-                                {val.volumeInfo.authors.map((val, index) => (
+                                {val.volumeInfo.authors && val.volumeInfo.authors.map((val, index) => (
                                     <P key={index}>{val}</P>
                                 ))}
                             </div>
@@ -67,7 +63,7 @@ const results = () => {
                 )) : <div className="container text-center h2">Please search for a book</div>
             }
             <div className={toastClass && toastClass} id="toast">
-               Book Saved Successfully!
+                Book Saved Successfully!
             </div>
         </Fragment>
     )

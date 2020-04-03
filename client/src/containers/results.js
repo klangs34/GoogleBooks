@@ -19,6 +19,8 @@ const results = () => {
     }
 
     const handleSave = (resultObj) => {
+        //clear toastClass
+        setToastClass("");
         //saves search in database
         const { id } = resultObj;
         const { title, authors, infoLink, description } = resultObj.volumeInfo;
